@@ -1,12 +1,14 @@
 .App {
-  width: 100vw;
+  width:100vw;
   height: 100vh;
-  background: #fff;
-  color: #212121;
-  font-family: "Open Sans", sans-serif;
-  display: grid;
-  place-items: center;
+  background-image: url("https://cdn.wallpapersafari.com/78/83/8s9fQZ.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 body {
   margin: 0%;
   padding: 0%;
@@ -20,6 +22,7 @@ body {
 }
 
 .joinChatContainer h3 {
+  color: #fff;
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
@@ -27,7 +30,7 @@ body {
   width: 210px;
   height: 40px;
   margin: 7px;
-  border: 2px solid #43a047;
+  border: 2px solid cornflowerblue;
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
@@ -41,31 +44,46 @@ body {
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
-  background: #43a047;
+  background: cornflowerblue;
   color: #fff;
   cursor: pointer;
 }
 
 .joinChatContainer button:hover {
-  background: #2e7d32;
+  background: steelblue;
 }
 
 .chat-window {
-  width: 300px;
-  height: 420px;
+  width: 550px;
+  height: fit-content;
+  color: #fff;
 }
+
+.chat-window-container {
+  width:100vw;
+  height: 100vh;
+  background-image: url("https://cdn.wallpapersafari.com/78/83/8s9fQZ.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .chat-window p {
   margin: 0;
 }
+
 .chat-window .chat-header {
   height: 45px;
   border-radius: 6px;
-  background: #263238;
+  background:cornflowerblue;
   position: relative;
   cursor: pointer;
 }
 .chat-window .chat-header p {
+  font-size: large;
   display: block;
   padding: 0 1em 0 2em;
   color: #fff;
@@ -76,9 +94,8 @@ body {
 .chat-window .chat-body {
   height: calc(450px - (45px + 70px));
   border: 1px solid #263238;
-  background: #fff;
-
-  position: relative;
+  background:transparent;
+  position:relative;
 }
 .chat-window .chat-body .message-container {
   width: 100%;
@@ -99,17 +116,20 @@ body {
 .chat-window .chat-body .message .message-content {
   width: auto;
   height: auto;
+  font-size: large;
   min-height: 40px;
-  max-width: 120px;
-  background-color: #43a047;
+  max-width:fit-content;
+  background-color: cornflowerblue;
   border-radius: 5px;
-  color: white;
+  color: #fff;
   display: flex;
-  align-items: center;
-  margin-right: 5px;
-  margin-left: 5px;
-  padding-right: 5px;
-  padding-left: 5px;
+  align-items:center;
+  margin-right: 8px;
+  margin-left: 8px;
+  padding-right: 8px;
+  padding-left: 8px;
+  padding-block-start: 8px;
+  padding-block-end: 8px;
   overflow-wrap: break-word;
   word-break: break-word;
 }
@@ -133,7 +153,7 @@ body {
 
 #other .message-content {
   justify-content: flex-end;
-  background-color: cornflowerblue;
+  background-color: steelblue;
 }
 
 #other .message-meta {
@@ -143,12 +163,12 @@ body {
 
 .message-meta #author {
   margin-left: 10px;
-  font-weight: bold;
+  font-weight:100;
 }
 
 .chat-window .chat-body .message .message-meta {
   display: flex;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .chat-window .chat-footer {
@@ -180,11 +200,11 @@ body {
   background: transparent;
   outline: none;
   font-size: 25px;
-  color: lightgray;
+  color: #fff;
 }
 
 .chat-window .chat-footer button:hover {
-  color: #43a047;
+  color: steelblue;
 }
 .hide {
   opacity: 0 !important;
