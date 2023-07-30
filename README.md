@@ -58,7 +58,7 @@ Backend:
 
 Database:
 
-* Ongoing 
+* MongoDB 
 
 Deployment:
 
