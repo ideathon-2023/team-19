@@ -5,6 +5,23 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 app.use(cors());
 
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://127.0.0.1:27017", {
+  dbName: "GhostTalk",
+})
+.then(() => console.log("Database Connected"))
+.catch((e) => console.log(e));
+
+const chatSchema = new mongoose.Schema({
+  room: String,
+  author: String,
+  time: String,
+  message: String,
+});
+
+const chat = mongoose.model("chat", chatSchema);
+
 const server = http.createServer(app);
 
 const io = new Server(server, {
@@ -23,6 +40,9 @@ io.on("connection", (socket) => {
   });
 
   socket.on("send_message", (data) => {
+                            
+    chat.create({room:data.room,author:data.author,time:data.time,message:data.message});
+
     socket.to(data.room).emit("receive_message", data);
   });
 
