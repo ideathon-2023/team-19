@@ -19,8 +19,8 @@ Make sure you have the following software installed on your system:
 * npm 
 
 # Installation:
-* on client - npm i socket-io-client
-* on server - npm i express cors nodemon socket-io
+* on client - npm i socket-io-client mongoose
+* on server - npm i express cors nodemon socket-io mongoose
 
 # Usage:
 To run GhostTalk on your local development environment, follow these steps:
