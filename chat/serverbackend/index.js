@@ -22,6 +22,18 @@ const chatSchema = new mongoose.Schema({
 
 const chat = mongoose.model("chat", chatSchema);
 
+app.get("/chat/:room", async (req, res) => {
+  try {
+    const { room } = req.params;
+    const chatHistory = await chat.find({ room }).exec();
+    res.status(200).json(chatHistory);
+  } catch (error) {
+    console.error("Error fetching chat history:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
 const server = http.createServer(app);
 
 const io = new Server(server, {
