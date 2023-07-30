@@ -24,11 +24,23 @@ function Chat({ socket, username, room }) {
   };
 
   useEffect(() => {
+    const getChatHistory = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/chat/${room}`);
+        const chatHistory = await response.json();
+        setMessageList(chatHistory);
+      } catch (error) {
+        console.error("Error fetching chat history:", error);
+      }
+    };
+    getChatHistory();
+
+    socket.emit("join_room", room);
     socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);
     });
     return () => socket.removeListener('receive_message')
-  }, [socket]);
+  }, [socket, room, username]);
 
   return (
     <div className="chat-window">
