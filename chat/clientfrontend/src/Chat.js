@@ -26,7 +26,7 @@ function Chat({ socket, username, room }) {
   useEffect(() => {
     const getChatHistory = async () => {
       try {
-        const response = await fetch(`http://192.168.1.46:3001/chat/${room}`);
+        const response = await fetch(`http://192.168.29.84:3001/chat/${room}`);
         const chatHistory = await response.json();
         setMessageList(chatHistory);
       } catch (error) {
