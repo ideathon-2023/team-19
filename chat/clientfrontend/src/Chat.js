@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
-import { Picker } from "emoji-mart";
+import EmojiPicker from "emoji-picker-react";
+
+
 import { AiOutlineCamera } from "react-icons/ai";
 
 function Chat({ socket, username, room }) {
@@ -26,6 +28,7 @@ function Chat({ socket, username, room }) {
       setMessageList((list) => [...list, messageData]);
       setCurrentMessage("");
       setCurrentImage(null);
+      setShowEmojiPicker(false);
     }
   };
 
@@ -41,7 +44,7 @@ function Chat({ socket, username, room }) {
   };
 
   const handleEmojiSelect = (emoji) => {
-    setCurrentMessage(currentMessage + emoji.native);
+    setCurrentMessage(currentMessage + emoji.emoji);
   };
 
   useEffect(() => {
@@ -97,14 +100,12 @@ function Chat({ socket, username, room }) {
         </ScrollToBottom>
       </div>
       <div className="chat-footer">
-        <div className="emoji-picker">
-          {showEmojiPicker && (
-            <Picker
-              onSelect={handleEmojiSelect}
-              style={{ position: "absolute", bottom: "50px", right: "10px", fontSize: "24px" }}
-            />
-          )}
+      {showEmojiPicker && (
+        <div className="emoji-picker" style={{ position: 'relative', bottom: '460px', left: '50px',width: '0px' }}>
+          <EmojiPicker onEmojiClick={handleEmojiSelect} preload />
         </div>
+      )}
+
         <input
           type="text"
           value={currentMessage}
@@ -118,6 +119,7 @@ function Chat({ socket, username, room }) {
         />
         <input
           type="file"
+          name="myImage"
           onChange={handleImageChange}
           accept="image/*"
           id="image-input"
