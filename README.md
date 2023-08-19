@@ -37,8 +37,6 @@ GhostTalk offers the following features:
 
 * Dark and Light Mode : Users can switch to dark and light modes for a comfortable viewing experience.
 
-* Image Sharing: GhostTalk allows users to share images in the chat, making conversations more visual.
-
 * Emoji Support: Users can send emojis to express emotions and add fun to their interactions.
 
 # Technologies Used:
