@@ -35,8 +35,6 @@ Open your web browser and navigate to http://localhost:3000 to access the GhostT
 # Features:
 GhostTalk offers the following features:
 
-* Pseudonymous Usernames: Each user is assigned a different username for every session, ensuring their anonymity.
-
 * Real-Time Messaging: Users can send and receive messages in real-time, enabling instant communication.
 
 * Dark and Light Mode : Users can switch to dark and light modes for a comfortable viewing experience.
