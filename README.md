@@ -1,5 +1,5 @@
 # Ghostalk
-Welcome to GhostTalk, a pseudonymous real-time chat application built using React, Node.js, and Socket.IO. GhostTalk allows users to have anonymous conversations in real-time, where each user is assigned a different username for every session. Additionally, users can send not only text messages but also images and emojis to make their conversations more expressive and fun.
+Welcome to GhostTalk, a real-time chat application built using React, Node.js, and Socket.Io. GhostTalk allows users to have anonymous conversations in real-time. With the latest enhancements, users can seamlessly connect and chat with others who are connected to the same Wi-Fi network. Additionally, users can send not only text messages but also images and emojis to make their conversations more expressive and fun. Whether you're across the room or just a few steps away, GhostTalk brings real-time conversations to your local network, making communication easy and enjoyable.
 
 # Table of Contents
 * Getting Started
@@ -19,8 +19,8 @@ Make sure you have the following software installed on your system:
 * npm 
 
 # Installation:
-* on client - npm i socket-io-client mongoose
-* on server - npm i express cors nodemon socket-io mongoose
+* on client - npm i socket.io-client mongoose react-icons reaact-client emoji-picker-react node-emoji react-easy-emoji 
+* on server - npm i express cors nodemon socket.io mongoose
 
 # Usage:
 To run GhostTalk on your local development environment, follow these steps:
@@ -30,12 +30,8 @@ Start the Node.js server:
 Start the React client:
  * cd clientfrontend -> npm start
 
-Open your web browser and navigate to http://localhost:3000 to access the GhostTalk application.
-
 # Features:
 GhostTalk offers the following features:
-
-* Pseudonymous Usernames: Each user is assigned a different username for every session, ensuring their anonymity.
 
 * Real-Time Messaging: Users can send and receive messages in real-time, enabling instant communication.
 
