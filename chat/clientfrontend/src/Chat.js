@@ -1,26 +1,47 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
+import { Picker } from "emoji-mart";
+import { AiOutlineCamera } from "react-icons/ai";
 
 function Chat({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
 
   const sendMessage = async () => {
-    if (currentMessage !== "") {
+    if (currentMessage.trim() !== "" || currentImage) {
       const messageData = {
         room: room,
         author: username,
         message: currentMessage,
-        time:
-          new Date(Date.now()).getHours() +
-          ":" +
-          new Date(Date.now()).getMinutes(),
+        image: currentImage,
+        time: new Date(Date.now()).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
       };
 
       await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
       setCurrentMessage("");
+      setCurrentImage(null);
     }
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setCurrentImage(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleEmojiSelect = (emoji) => {
+    setCurrentMessage(currentMessage + emoji.native);
   };
 
   useEffect(() => {
@@ -39,7 +60,7 @@ function Chat({ socket, username, room }) {
     socket.on("receive_message", (data) => {
       setMessageList((list) => [...list, data]);
     });
-    return () => socket.removeListener('receive_message')
+    return () => socket.removeListener("receive_message");
   }, [socket, room, username]);
 
   return (
@@ -49,27 +70,41 @@ function Chat({ socket, username, room }) {
       </div>
       <div className="chat-body">
         <ScrollToBottom className="message-container">
-          {messageList.map((messageContent) => {
-            return (
-              <div
-                className="message"
-                id={username === messageContent.author ? "you" : "other"}
-              >
-                <div>
-                  <div className="message-content">
-                    <p>{messageContent.message}</p>
-                  </div>
-                  <div className="message-meta">
-                    <p id="time">{messageContent.time}</p>
-                    <p id="author">{messageContent.author}</p>
-                  </div>
+          {messageList.map((messageContent, index) => (
+            <div
+              className="message"
+              id={username === messageContent.author ? "you" : "other"}
+              key={index}
+            >
+              <div>
+                <div className="message-content">
+                  <p>{messageContent.message}</p>
+                  {messageContent.image && (
+                    <img
+                      src={messageContent.image}
+                      alt={`Image sent by ${messageContent.author}`}
+                      className="message-image"
+                    />
+                  )}
+                </div>
+                <div className="message-meta">
+                  <p id="time">{messageContent.time}</p>
+                  <p id="author">{messageContent.author}</p>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </ScrollToBottom>
       </div>
       <div className="chat-footer">
+        <div className="emoji-picker">
+          {showEmojiPicker && (
+            <Picker
+              onSelect={handleEmojiSelect}
+              style={{ position: "absolute", bottom: "50px", right: "10px", fontSize: "24px" }}
+            />
+          )}
+        </div>
         <input
           type="text"
           value={currentMessage}
@@ -81,7 +116,30 @@ function Chat({ socket, username, room }) {
             event.key === "Enter" && sendMessage();
           }}
         />
-        <button onClick={sendMessage}>&#9658;</button>
+        <input
+          type="file"
+          onChange={handleImageChange}
+          accept="image/*"
+          id="image-input"
+          style={{ display: "none" }}
+        />
+        <label htmlFor="image-input">
+          <div className="camera-icon-container">
+          <AiOutlineCamera className="camera-icon" style={{ fontSize: "45px" }} />
+          </div>
+        </label>
+        <button
+          onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+          style={{ fontSize: "24px", padding: "6px 12px" }}
+        >
+          😄
+        </button>
+        <button
+          onClick={sendMessage}
+          style={{ fontSize: "24px", padding: "6px 12px" }}
+        >
+          &#9658;
+        </button>
       </div>
     </div>
   );

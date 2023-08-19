@@ -5,7 +5,7 @@ import Chat from "./Chat";
 import white_bg from "./back_w.jpg";
 import ghost from './ghost_logo.svg';
 
-const socket = io.connect("http://192.168.29.84:3000");
+const socket = io.connect("http://192.168.29.84:3001");
 
 function App() {
   const [username, setUsername] = useState("");

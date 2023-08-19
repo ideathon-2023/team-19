@@ -280,3 +280,55 @@ body {
   background: none;
   align-items: center;
 }
+.emoji-picker {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Style for the emoji picker button */
+.emoji-picker button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.emoji-mart {
+  position: absolute;
+  bottom: 50px;
+  right: 10px;
+}
+.emoji-picker-styles {
+  position: absolute;
+  bottom: 50px;
+  right: 10px;
+  /* Other styles */
+}
+.message-image {
+  max-width: 100%; /* Ensure the image doesn't exceed its container */
+  height: 300px; /* Maintain the aspect ratio */
+  margin-top: 8px; /* Add a little spacing above the image */
+  border-radius: 8px; /* Add a rounded border to the image */
+}
+
+.camera-icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: cornflowerblue;
+  width: 32px; /* Set the initial width */
+  height: 32px; /* Set the initial height */
+  padding: 5px; /* Adjust padding for a more compact look */
+  border-radius: 1px;
+  cursor: pointer;
+  transition: width 0.3s ease, height 0.3s ease, padding 0.3s ease; /* Add transitions for smoother animations */
+}
+
+.camera-icon-container:hover {
+  background-color: cornflowerblue;
+  width: 29px; /* Increase the width on hover */
+  height: 29px; /* Increase the height on hover */
+  padding: 7px; /* Increase padding on hover */
+  box-shadow: 0 5px 25px rgba(0,0,0,.2);
+  border-radius: 1px;
+}
