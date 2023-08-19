@@ -30,8 +30,6 @@ Start the Node.js server:
 Start the React client:
  * cd clientfrontend -> npm start
 
-Open your web browser and navigate to http://localhost:3000 to access the GhostTalk application.
-
 # Features:
 GhostTalk offers the following features:
 
