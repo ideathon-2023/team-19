@@ -1,5 +1,5 @@
 # Ghostalk
-Welcome to GhostTalk, a real-time chat application built using React, Node.js, and Socket.Io. GhostTalk allows users to have anonymous conversations in real-time. With the latest enhancements, users can seamlessly connect and chat with others who are connected to the same Wi-Fi network. Additionally, users can send not only text messages but also images and emojis to make their conversations more expressive and fun. Whether you're across the room or just a few steps away, GhostTalk brings real-time conversations to your local network, making communication easy and enjoyable.
+Welcome to GhostTalk, a real-time chat application built using React, Node.js, and Socket.Io. GhostTalk allows users to have anonymous conversations in real-time. With the latest enhancements, users can seamlessly connect and chat with others who are connected to the same Wi-Fi network. Additionally, users can send not only text messages but also emojis to make their conversations more expressive and fun. Whether you're across the room or just a few steps away, GhostTalk brings real-time conversations to your local network, making communication easy and enjoyable. Also, you can open the app on you phone too!!!
 
 # Table of Contents
 * Getting Started
@@ -36,8 +36,6 @@ GhostTalk offers the following features:
 * Real-Time Messaging: Users can send and receive messages in real-time, enabling instant communication.
 
 * Dark and Light Mode : Users can switch to dark and light modes for a comfortable viewing experience.
-
-* Image Sharing: GhostTalk allows users to share images in the chat, making conversations more visual.
 
 * Emoji Support: Users can send emojis to express emotions and add fun to their interactions.
 
