@@ -9,15 +9,15 @@ function Chat({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
-  const [currentImage, setCurrentImage] = useState(null);
+
 
   const sendMessage = async () => {
-    if (currentMessage.trim() !== "" || currentImage) {
+    if (currentMessage.trim() !== "" ) {
       const messageData = {
         room: room,
         author: username,
         message: currentMessage,
-        image: currentImage,
+
         time: new Date(Date.now()).toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
@@ -27,21 +27,13 @@ function Chat({ socket, username, room }) {
       await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
       setCurrentMessage("");
-      setCurrentImage(null);
+      
       setShowEmojiPicker(false);
     }
   };
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setCurrentImage(e.target.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+
+
 
   const handleEmojiSelect = (emoji) => {
     setCurrentMessage(currentMessage + emoji.emoji);
@@ -82,13 +74,9 @@ function Chat({ socket, username, room }) {
               <div>
                 <div className="message-content">
                   <p>{messageContent.message}</p>
-                  {messageContent.image && (
-                    <img
-                      src={messageContent.image}
-                      alt={`Image sent by ${messageContent.author}`}
-                      className="message-image"
-                    />
-                  )}
+                  
+
+                  
                 </div>
                 <div className="message-meta">
                   <p id="time">{messageContent.time}</p>
@@ -120,7 +108,7 @@ function Chat({ socket, username, room }) {
         <input
           type="file"
           name="myImage"
-          onChange={handleImageChange}
+
           accept="image/*"
           id="image-input"
           style={{ display: "none" }}
